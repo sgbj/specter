@@ -1,0 +1,25 @@
+{
+  "name": "specter",
+  "version": "1.0.0",
+  "description": "Screen recording app built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "gulp --gulpfile semantic/gulpfile.js build"
+  },
+  "repository": "https://github.com/sgbj/specter",
+  "keywords": [
+    "screen",
+    "recording",
+    "Electron"
+  ],
+  "author": "sgbj",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "semantic-ui": "^2.2.4"
+  }
+}

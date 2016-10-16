@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Specter</title>
+    <link href="semantic/dist/semantic.css" rel="stylesheet">
+    <style>
+      .ui.selection.visible.dropdown > .text:not(.default) {
+        color: inherit;
+      }
+      .ui.inverted.segment {
+        border-radius: 0;
+        margin-bottom: 0;
+        display: flex;
+        flex-flow: column;
+        align-items: stretch;
+        height: 100%;
+      }
+      #screen {
+        width: 100%;
+      }
+      .video {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui center aligned inverted segment">
+      <section class="ui center aligned">
+        <select id="screens" class="ui inverted basic button dropdown">
+          <option value="" selected disabled>Select a screen</option>
+        </select>
+        <button id="capture" class="ui inverted basic button">Start</button>
+      </section>
+      <section class="video">
+        <video id="screen" autoplay></video>
+        <h2 id="placeholder" class="ui inverted icon header">
+          <i class="grey video play outline icon"></i> 
+          <div class="content">
+            Start recording
+            <div class="grey sub header">Select a screen and click start</div>
+          </div>
+      </section>
+    </div>
+  </body>
+  <script>
+    $ = jQuery = require('jquery');
+    require('./semantic/dist/semantic.min.js');
+    require('./renderer.js');
+  </script>
+</html>
