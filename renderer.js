@@ -21,6 +21,7 @@ desktopCapturer.getSources({types: ['screen']}, (error, sources) => {
     populateScreens(sources);
 });
 
+screens.addEventListener('change', previewScreen);
 capture.addEventListener('click', handleCapture);
 
 function populateScreens(sources) {
@@ -31,6 +32,20 @@ function populateScreens(sources) {
         option.innerText = source.name;
         screens.appendChild(option);
     });
+}
+
+function previewScreen(event) {
+    navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+            mandatory: {
+                chromeMediaSource: 'desktop',
+                chromeMediaSourceId: screens.value,
+                maxWidth: 1920,
+                maxHeight: 1080
+            }
+        }
+    }).then(previewRecording).catch(handleError);
 }
 
 function handleCapture(event) {
@@ -53,6 +68,12 @@ function handleCapture(event) {
     }
 }
 
+function previewRecording(stream) {
+    screen.src = URL.createObjectURL(stream);
+    screen.style.display = 'block';
+    placeholder.style.display = 'none';
+}
+
 function startRecording(stream) {
     screen.src = URL.createObjectURL(stream);
     recorder = new MediaRecorder(stream);
@@ -61,17 +82,16 @@ function startRecording(stream) {
     capture.innerText = 'Stop';
     screen.style.display = 'block';
     placeholder.style.display = 'none';
+    document.querySelector('.ui.dropdown').classList.add('disabled');
 }
 
 function stopRecording() {
     URL.revokeObjectURL(screen.src);
-    screen.src = '';
     recorder.stop();
     download(new Blob(chunks, { type : 'video/mp4' }));
     chunks = [];
     capture.innerText = 'Start';
-    screen.style.display = 'none';
-    placeholder.style.display = 'block';
+    document.querySelector('.ui.dropdown').classList.remove('disabled');
 }
 
 function download(blob) {
