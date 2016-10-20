@@ -1,11 +1,16 @@
 {
   "name": "specter",
+  "productName": "specter",
   "version": "1.0.0",
   "description": "Screen recording app built with Electron",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "postinstall": "gulp --gulpfile semantic/gulpfile.js build"
+    "electron": "electron",
+    "electron-packager": "electron-packager",
+    "gulp": "gulp",
+    "start": "npm run electron .",
+    "build": "npm run electron-packager -- . --all --out=dist",
+    "postinstall": "npm run gulp -- --gulpfile semantic/gulpfile.js build"
   },
   "repository": "https://github.com/sgbj/specter",
   "keywords": [
@@ -16,7 +21,8 @@
   "author": "sgbj",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "electron-packager": "^8.1.0"
   },
   "dependencies": {
     "jquery": "^3.1.1",

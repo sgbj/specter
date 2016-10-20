@@ -24,12 +24,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 1;
+      }
+      .controls {
+        z-index: 2;
       }
     </style>
   </head>
   <body>
     <div class="ui center aligned inverted segment">
-      <section class="ui center aligned">
+      <section class="ui center aligned controls">
         <select id="screens" class="ui inverted basic button dropdown">
           <option value="" selected disabled>Select a screen</option>
         </select>

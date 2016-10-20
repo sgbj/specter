@@ -1,5 +1,5 @@
 # specter
-Screen recording app built with Electron
+Screen recording app built with [Electron](https://www.npmjs.com/package/electron)
 
 ![Screenshot](https://github.com/sgbj/specter/raw/master/screenshots/1.png) ![Screenshot while recording](https://github.com/sgbj/specter/raw/master/screenshots/2.png)
 
@@ -19,11 +19,17 @@ Get the latest binaries from the [releases](https://github.com/sgbj/specter/rele
 
     ```
     cd specter
-    npm install
+    npm install -- or yarn
     ```
     
-3. Run the program (make sure you have [electron](https://www.npmjs.com/package/electron))
+3. Run the program
 
     ```
     npm start
+    ```
+
+4. Package the application for release
+
+    ```
+    npm run build
     ```
